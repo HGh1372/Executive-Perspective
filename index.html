@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>C-Suite Executive Blueprint | Strategy & Simulators (IR Market)</title>
+  <title>C-Suite Executive Blueprint | Strategy & Simulators</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,10 +19,10 @@
     }
 
     [data-theme="dark"] {
-      --bg-base: #06090f; --bg-surface: #0d131f; --bg-card: rgba(18, 27, 43, 0.6);
-      --bg-result: rgba(14, 165, 233, 0.08); --border-subtle: rgba(255, 255, 255, 0.1);
-      --border-accent: rgba(14, 165, 233, 0.3); --text-main: #f8fafc;
-      --text-muted: #94a3b8; --text-dim: #64748b; --primary: #0ea5e9;
+      --bg-base: #040609; --bg-surface: #0b111a; --bg-card: #0d141e;
+      --bg-result: rgba(14, 165, 233, 0.08); --border-subtle: rgba(255, 255, 255, 0.05);
+      --border-accent: rgba(56, 189, 248, 0.4); --text-main: #f8fafc;
+      --text-muted: #a1a1aa; --text-dim: #64748b; --primary: #0ea5e9;
       --primary-light: #38bdf8; --accent: #8b5cf6; --success: #10b981;
       --warning: #f59e0b; --danger: #ef4444; --shadow: 0 16px 40px rgba(0,0,0,0.5);
     }
@@ -37,7 +37,7 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
-    body { background-color: var(--bg-base); color: var(--text-main); font-family: var(--font-fa); line-height: 1.75; transition: background-color 0.4s, color 0.4s; overflow-x: hidden; }
+    body { background-color: var(--bg-base); color: var(--text-main); font-family: var(--font-fa); line-height: 1.8; transition: background-color 0.4s, color 0.4s; overflow-x: hidden; }
     body[dir="ltr"] { font-family: var(--font-en); }
 
     /* Tooltip Styles */
@@ -45,34 +45,59 @@
     .tooltip:hover { color: var(--primary-light); }
     .tooltip::after {
       content: attr(data-tooltip); position: absolute; bottom: 130%; left: 50%; transform: translateX(-50%) translateY(5px);
-      background: var(--bg-surface); color: var(--text-main); padding: 0.3rem 0.6rem; border-radius: 6px;
+      background: var(--bg-surface); color: var(--text-main); padding: 0.4rem 0.8rem; border-radius: 6px;
       font-size: 0.75rem; white-space: nowrap; opacity: 0; visibility: hidden; transition: var(--transition);
       border: 1px solid var(--border-accent); box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 1000;
     }
     .tooltip:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
 
     /* Header */
-    header { position: sticky; top: 0; z-index: 1000; background: var(--bg-surface); border-bottom: 1px solid var(--border-subtle); padding: 1rem 4%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+    header { position: sticky; top: 0; z-index: 1000; background: var(--bg-surface); border-bottom: 1px solid var(--border-subtle); padding: 1rem 4%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
     .brand { font-weight: 800; font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem; }
     .brand span { color: var(--primary); }
-    .controls { display: flex; gap: 1rem; }
+    .controls { display: flex; gap: 1rem; align-items: center; }
     .btn { background: var(--bg-card); border: 1px solid var(--border-subtle); color: var(--text-main); padding: 0.4rem 1.2rem; border-radius: 20px; font-weight: 700; font-size: 0.8rem; cursor: pointer; transition: var(--transition); font-family: inherit; }
     .btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .btn-edit { background: rgba(59, 130, 246, 0.15); color: var(--primary-light); border-color: rgba(59, 130, 246, 0.4); }
+    .btn-edit:hover { background: var(--primary-light); color: #000; }
 
     /* Core Container */
-    .container { max-width: 1400px; margin: 0 auto; padding: 3rem 4%; display: flex; flex-direction: column; gap: 5rem; }
+    .container { max-width: 1400px; margin: 0 auto; padding: 3rem 4%; display: flex; flex-direction: column; gap: 5rem; transition: var(--transition); border-radius: 16px;}
     .sec-head { margin-bottom: 2.5rem; }
     .sec-head h2 { font-size: 2rem; font-weight: 800; display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; color: var(--primary-light); }
     .sec-head h2::before { content: ''; width: 6px; height: 2rem; background: var(--primary); border-radius: 4px; }
-    .sec-head p { font-size: 1.05rem; color: var(--text-muted); max-width: 1100px; line-height: 1.8; }
+    .sec-head p { font-size: 1.05rem; color: var(--text-muted); max-width: 1100px; line-height: 1.8; text-align: justify; }
 
-    /* Grids & Cards */
+    /* Grids & Refined Cards (Based on Image Reference) */
     .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 2rem; }
     .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
-    .card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 2rem; transition: var(--transition); display: flex; flex-direction: column; height: 100%; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-    .card:hover { border-color: var(--border-accent); box-shadow: var(--shadow); transform: translateY(-3px); }
-    .card h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 1rem; color: var(--primary-light); }
-    .doc-ref { background: rgba(139, 92, 246, 0.15); color: var(--accent); padding: 0.1rem 0.4rem; border-radius: 4px; font-weight: 700; border: 1px solid rgba(139, 92, 246, 0.3); font-size: 0.85rem; margin: 0 0.1rem; white-space: nowrap; }
+    
+    .card { 
+      background: var(--bg-card); border: 1px solid #1e3a5f; border-radius: 12px; 
+      padding: 2rem; transition: var(--transition); display: flex; flex-direction: column; 
+      height: 100%; position: relative;
+    }
+    .card:hover { border-color: var(--primary-light); box-shadow: 0 0 20px rgba(56, 189, 248, 0.05); transform: translateY(-3px); }
+    
+    .card-tag-wrapper { display: flex; justify-content: flex-end; margin-bottom: 1.5rem; }
+    body[dir="ltr"] .card-tag-wrapper { justify-content: flex-end; }
+    .card-tag { 
+      display: inline-block; padding: 0.3rem 0.8rem; background: transparent; 
+      color: var(--primary-light); font-weight: 700; font-size: 0.85rem; 
+      border-radius: 6px; border: 1px solid #1e3a5f;
+    }
+    
+    .en-title { display: block; text-align: right; font-size: 1.4rem; font-weight: 800; margin-bottom: 1.25rem; color: var(--primary-light); }
+    body[dir="ltr"] .en-title { text-align: left; }
+    
+    .card-desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 2rem; text-align: justify; line-height: 1.8; flex-grow: 1; }
+    
+    .card-list { display: flex; flex-direction: column; gap: 1rem; border-top: 1px dashed #1e3a5f; padding-top: 1.5rem; }
+    .card-list-item { font-size: 0.9rem; color: var(--text-muted); display: flex; gap: 0.5rem; align-items: baseline; line-height: 1.7; }
+    .card-list-item .diamond { color: var(--primary-light); font-size: 0.8rem; margin-top: 2px;}
+    .lbl-bold { font-weight: 800; color: #ffffff; white-space: nowrap; }
+    
+    .doc-ref { background: rgba(139, 92, 246, 0.15); color: var(--accent); padding: 0.1rem 0.4rem; border-radius: 4px; font-weight: 700; border: 1px solid rgba(139, 92, 246, 0.3); font-size: 0.85rem; margin: 0 0.2rem; display: inline-block; direction: ltr; }
 
     /* Tables */
     .table-wrapper { overflow-x: auto; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 16px; }
@@ -86,28 +111,31 @@
     .simulator { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
     .sim-top-card { padding: 2rem; text-align: center; border-bottom: 1px solid var(--border-subtle); transition: var(--transition); display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
     .res-title { font-size: 0.85rem; font-weight: 800; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
-    .res-score { font-size: 3rem; font-weight: 800; line-height: 1.2; direction: ltr;}
-    .res-verdict { font-size: 1.1rem; font-weight: 800; padding: 0.6rem 1.5rem; border-radius: 12px; transition: all 0.3s; width: 100%; max-width: 400px; }
     
-    /* Sim Controls & Info Button */
-    .sim-controls { padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem; position: relative; }
-    .sim-header-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; }
-    .sim-controls h4 { font-size: 1.15rem; font-weight: 800; }
-    .info-btn { background: rgba(59, 130, 246, 0.1); color: var(--primary-light); border: 1px solid rgba(59, 130, 246, 0.3); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; cursor: pointer; transition: 0.2s; font-family: inherit; }
-    .info-btn:hover { background: var(--primary); color: #fff; }
+    /* RTL fixed for score */
+    .res-score { display: flex; align-items: baseline; justify-content: center; gap: 0.5rem; }
+    .res-score .num { font-size: 3rem; font-weight: 800; line-height: 1.2; direction: ltr; display: inline-block; }
+    .res-score .unit { font-size: 1.2rem; font-weight: 600; color: var(--text-dim); }
     
-    /* Expandable Scientific Logic Panel */
-    .sim-logic { display: none; background: var(--bg-card); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-accent); margin-bottom: 1rem; font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; }
-    .sim-logic.active { display: block; animation: fadeIn 0.4s ease; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
-    .logic-title { color: var(--primary-light); font-weight: 800; margin-bottom: 0.5rem; font-size: 0.95rem; }
+    .res-verdict { font-size: 1.1rem; font-weight: 800; padding: 0.6rem 1.5rem; border-radius: 12px; transition: all 0.3s; width: 100%; max-width: 400px; text-align: center; }
+    
+    /* Sim Controls & Logic Panel */
+    .sim-controls { padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem; }
+    .sim-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+    .sim-controls h4 { font-size: 1.2rem; font-weight: 800; color: var(--primary-light); }
+    
+    /* Logic Panel (Visible by default) */
+    .sim-logic { display: block; background: rgba(255,255,255,0.03); padding: 1.25rem; border-radius: 12px; border-right: 3px solid var(--primary); margin-bottom: 1rem; font-size: 0.85rem; color: var(--text-muted); line-height: 1.8; text-align: justify;}
+    body[dir="ltr"] .sim-logic { border-right: none; border-left: 3px solid var(--primary); }
+    [data-theme="light"] .sim-logic { background: rgba(0,0,0,0.03); }
+    .logic-title { color: var(--text-main); font-weight: 800; margin-bottom: 0.5rem; font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem;}
     .logic-link { color: var(--accent); text-decoration: none; font-weight: 700; }
     .logic-link:hover { text-decoration: underline; }
 
     /* Sliders */
     .slider-group { display: flex; flex-direction: column; gap: 0.5rem; }
     .slider-labels { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700; color: var(--text-muted); }
-    .slider-labels span.val { color: var(--primary-light); font-weight: 800; font-size: 1rem; direction: ltr;}
+    .slider-labels span.val { color: var(--primary-light); font-weight: 800; font-size: 1.05rem; direction: ltr; display: inline-block; }
     input[type=range] { width: 100%; accent-color: var(--primary); cursor: pointer; height: 6px; }
 
     /* Chart Layout */
@@ -128,14 +156,14 @@
     .bg-accent { background: rgba(139,92,246,0.1); border-color: rgba(139,92,246,0.3); color: var(--accent); }
 
     /* Summary Card */
-    .summary-card { background: linear-gradient(135deg, rgba(14,165,233,0.1), rgba(139,92,246,0.05)); border: 1px solid var(--border-accent); border-radius: 16px; padding: 3rem; text-align: right; }
+    .summary-card { background: linear-gradient(135deg, rgba(14,165,233,0.1), rgba(139,92,246,0.05)); border: 1px solid var(--border-accent); border-radius: 16px; padding: 3rem; text-align: right; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
     body[dir="ltr"] .summary-card { text-align: left; }
-    .summary-card h3 { font-size: 1.8rem; font-weight: 800; color: var(--primary-light); margin-bottom: 1.5rem; text-align: center; }
-    .manifesto-block { font-size:1.05rem; font-weight:500; color:var(--text-main); line-height:1.8; text-align: justify; }
-    .manifesto-block strong { color:var(--primary-light); font-weight:800; font-size: 1.15rem; display: block; margin-bottom: 0.5rem; margin-top: 1.5rem; }
+    .summary-card h3 { font-size: 1.8rem; font-weight: 800; color: var(--primary-light); margin-bottom: 1.5rem; text-align: center; border-bottom: 1px solid rgba(14,165,233,0.2); padding-bottom: 1rem; }
+    .manifesto-block { font-size:1.05rem; font-weight:500; color:var(--text-main); line-height:1.9; text-align: justify; }
+    .manifesto-block strong { color:var(--primary-light); font-weight:800; }
     
     @media (max-width: 1024px) { .chart-layout { grid-template-columns: 1fr; } .chart-controls { border-left: none; border-bottom: 1px solid var(--border-subtle); } body[dir="ltr"] .chart-controls { border-right: none; } }
-    @media (max-width: 768px) { .grid-2, .grid-3, .sim-container { grid-template-columns: 1fr; } .res-score { font-size: 2.2rem; } }
+    @media (max-width: 768px) { .grid-2, .grid-3, .sim-container { grid-template-columns: 1fr; } .res-score .num { font-size: 2.2rem; } }
   </style>
 </head>
 <body>
@@ -143,6 +171,7 @@
   <header>
     <div class="brand">EXEC<span>BOARD</span></div>
     <div class="controls">
+      <button class="btn btn-edit" id="editBtn" data-i18n="btn_edit">ویرایش متن</button>
       <button class="btn" id="langBtn">EN / فا</button>
       <button class="btn" id="themeBtn" data-i18n="btn_theme">تغییر تم</button>
     </div>
@@ -157,26 +186,55 @@
     const dict = {
       fa: {
         btn_theme: "تغییر تم",
+        btn_edit: "ویرایش متن",
+        btn_save: "ذخیره / خروج از ویرایش",
+        
         sec1_title: "۱. خلاصه مدیریتی و هدف راهبردی",
-        sec1_desc: "ایجاد یک مدل مدیریتی یکپارچه برای تبدیل ظرفیت علمی شرکت، نیازهای بیماران، فرصت‌های توسعه محصول و اطلاعات بازار به تصمیم‌های اولویت‌بندی‌شده و ارزش پایدار کسب‌وکار؛ با رعایت استقلال علمی و الزامات مقرراتی.<br><br><strong>منطق اجرا بر پنج مرحله استوار است:</strong><br>تشخیص وضعیت موجود ← تعیین اولویت‌ها ← تعریف <span class='tooltip' data-tooltip='Objectives and Key Results'>OKR</span> و شاخص‌ها ← اجرای برنامه‌ها ← ارزیابی نتایج.",
+        sec1_desc: "ایجاد یک مدل مدیریتی یکپارچه برای تبدیل ظرفیت علمی شرکت، نیازهای بیماران، فرصت‌های توسعه محصول و اطلاعات بازار به تصمیم‌های اولویت‌بندی‌شده، خروجی‌های قابل سنجش و ارزش پایدار کسب‌وکار؛ با رعایت استقلال علمی، ایمنی بیمار و الزامات مقرراتی.<br><br><strong>منطق اجرا بر پنج مرحله استوار است:</strong><br>تشخیص وضعیت موجود ← تعیین اولویت‌ها ← تعریف <span class='tooltip' data-tooltip='Objectives and Key Results'>OKR</span> و شاخص‌ها ← اجرای برنامه‌ها ← ارزیابی نتایج و اصلاح مسیر",
         
         sec2_title: "۲. حوزه‌های اولویت‌دار و برنامه اجرایی",
-        sec2_desc: "این حوزه‌ها در قالب یک سیستم واحد مدیریت می‌شوند. تحلیل بازار ورودی تصمیم <span class='tooltip' data-tooltip='Business Development'>BD</span> است و برنامه‌های بالینی از نیاز واقعی پشتیبانی می‌کنند.",
-        dom_1_t: "Medical Affairs", dom_1_d: "تحلیل جایگاه علمی، شناسایی شکاف شواهد، تدوین برنامه پزشکی و مدیریت بینش‌ها.", dom_1_o: "خروجی: Medical Plan، نقشه شکاف شواهد.<br>KPI: درصد تحقق نقاط عطف بالینی.",
-        dom_2_t: "Business Development", dom_2_d: "شناسایی و غربال فرصت‌ها با استناد به <span class='doc-ref'>Pharma Market Intelligence[cite: 1]</span>، تحلیل مالی و امکان‌سنجی.", dom_2_o: "خروجی: قیف فرصت‌ها، امتیازنامه ارزیابی، Business Case.<br>KPI: زمان عبور از مراحل ارزیابی.",
-        dom_3_t: "Patient Care", dom_3_d: "ترسیم مسیر بیمار، شناسایی موانع دسترسی، طراحی برنامه‌های پشتیبانی (<span class='tooltip' data-tooltip='Patient Support Program'>PSP</span>).", dom_3_o: "خروجی: طرح PSP، گزارش صدای بیمار.<br>KPI: زمان پاسخ‌گویی، حل مسائل.",
-        dom_4_t: "PV & Compliance", dom_4_d: "کنترل مسیر ارجاع ایمنی و هماهنگی با تیم‌های تضمین کیفیت (<span class='tooltip' data-tooltip='Quality Assurance'>QA</span>).", dom_4_o: "خروجی: تقویم انطباق، ماتریس مسئولیت.<br>KPI: تحویل به‌موقع گزارش‌ها، تکمیل <span class='tooltip' data-tooltip='Corrective and Preventive Actions'>CAPA</span>.",
+        sec2_desc: "این حوزه‌ها باید در قالب یک سیستم واحد مدیریت شوند. برای مثال، تحلیل بازار باید ورودی تصمیم <span class='tooltip' data-tooltip='Business Development'>BD</span> باشد؛ تصمیم BD باید با ظرفیت تولید تطبیق داده شود؛ و برنامه Medical از نیاز واقعی پشتیبانی کند.",
+        
+        dom_1_t: "Medical Affairs", 
+        dom_1_d: "تحلیل جایگاه علمی محصولات، شناسایی شکاف شواهد، تدوین برنامه پزشکی، طراحی آموزش علمی و مدیریت بینش‌های پزشکی.", 
+        dom_1_o1: "<span class='diamond'>◈</span> <div><span class='lbl-bold'>خروجی:</span> <span dir='ltr'>Medical Plan</span>، نقشه شکاف شواهد، تقویم فعالیت‌های علمی.</div>", 
+        dom_1_o2: "<span class='diamond'>◈</span> <div><span class='lbl-bold'>KPI:</span> درصد تحقق نقاط عطف، پوشش شکاف‌ها.</div>",
+        
+        dom_2_t: "Business Development (BD)", 
+        dom_2_d: "شناسایی و غربال فرصت‌ها با استناد به <span class='doc-ref'>Pharma Market Intelligence[cite: 1]</span>، بررسی علمی و مقرراتی، تحلیل مالی و امکان‌سنجی.", 
+        dom_2_o1: "<span class='diamond'>◈</span> <div><span class='lbl-bold'>خروجی:</span> قیف فرصت‌ها، امتیازنامه ارزیابی، <span dir='ltr'>Business Case</span>.</div>", 
+        dom_2_o2: "<span class='diamond'>◈</span> <div><span class='lbl-bold'>KPI:</span> کامل‌بودن ارزیابی فرصت‌ها، زمان عبور از مراحل.</div>",
+        
+        dom_3_t: "Patient Care", 
+        dom_3_d: "ترسیم مسیر بیمار، شناسایی موانع درمان و دسترسی، طراحی برنامه‌های پشتیبانی و استانداردسازی پاسخ‌گویی.", 
+        dom_3_o1: "<span class='diamond'>◈</span> <div><span class='lbl-bold'>خروجی:</span> <span dir='ltr'>Patient Journey Map</span>، طرح <span class='tooltip' data-tooltip='Patient Support Program'>PSP</span>، گزارش صدای بیمار.</div>", 
+        dom_3_o2: "<span class='diamond'>◈</span> <div><span class='lbl-bold'>KPI:</span> زمان پاسخ‌گویی، حل مسائل، رعایت سطح خدمت.</div>",
+        
+        dom_4_t: "Pharmacovigilance & Compliance", 
+        dom_4_d: "تعیین مسئولیت‌ها، تنظیم تقویم تعهدات، هماهنگی با <span class='tooltip' data-tooltip='Pharmacovigilance'>PV</span>، <span dir='ltr'>Regulatory</span> و <span class='tooltip' data-tooltip='Quality Assurance'>QA</span> و کنترل مسیر ارجاع ایمنی.", 
+        dom_4_o1: "<span class='diamond'>◈</span> <div><span class='lbl-bold'>خروجی:</span> تقویم انطباق، ماتریس مسئولیت، مسیر ارجاع.</div>", 
+        dom_4_o2: "<span class='diamond'>◈</span> <div><span class='lbl-bold'>KPI:</span> تحویل به‌موقع گزارش‌ها، تکمیل <span class='tooltip' data-tooltip='Corrective and Preventive Actions'>CAPA</span> در موعد.</div>",
+        
+        dom_5_t: "Market & Competitive Intelligence", 
+        dom_5_d: "تحلیل اندازه و رشد بازار، رقبا، قیمت و دسترسی با استفاده از پایگاه داده <span class='doc-ref'>Pharma Market Intelligence[cite: 1]</span>.", 
+        dom_5_o1: "<span class='diamond'>◈</span> <div><span class='lbl-bold'>خروجی:</span> گزارش تحلیل بازار، بنچمارک رقبا، نقشه فرصت‌ها.</div>", 
+        dom_5_o2: "<span class='diamond'>◈</span> <div><span class='lbl-bold'>KPI:</span> دقت پیش‌بینی و تعداد بینش‌های منجر به تصمیم.</div>",
+        
+        dom_6_t: "Performance, Budget & Team", 
+        dom_6_d: "تدوین OKR، مدیریت منابع و بودجه، پایش عملکرد، رفع موانع و توسعه توانمندی تیم.", 
+        dom_6_o1: "<span class='diamond'>◈</span> <div><span class='lbl-bold'>خروجی:</span> داشبورد KPI، برنامه منابع، گزارش عملکرد.</div>", 
+        dom_6_o2: "<span class='diamond'>◈</span> <div><span class='lbl-bold'>KPI:</span> تحقق OKR، انحراف بودجه، بسته‌شدن اقدامات.</div>",
         
         sec3_title: "۳. نقشه راه اجرایی ۱۲ماهه",
-        sec3_desc: "زمان‌بندی دقیق از فاز تشخیص تا مقیاس‌پذیری ارزش‌آفرینی در بازار دارویی ایران.",
-        rm1_t: "ماه ۱–۲ | تشخیص (DIAGNOSE)", rm1_d: "بررسی سبد محصولات و تعهدات. تعیین خط مبنا.",
-        rm2_t: "ماه ۳–۴ | طراحی (DESIGN)", rm2_d: "تدوین اهداف، تعیین بودجه (تومانی) و طراحی برنامه‌های PSP و مدیکال.",
-        rm3_t: "ماه ۵–۸ | پایلوت (PILOT)", rm3_d: "اجرای برنامه‌ها روی محصولات منتخب و ارزیابی کیفیت داده‌ها.",
-        rm4_t: "ماه ۹–۱۲ | توسعه (SCALE)", rm4_d: "گسترش برنامه‌های موفق و تدوین برنامه سال بعد.",
+        sec3_desc: "زمان‌بندی دقیق از فاز تشخیص تا مقیاس‌پذیری ارزش‌آفرینی.",
+        rm1_t: "ماه ۱–۲ | DIAGNOSE (تشخیص)", rm1_d: "بررسی ساختار، سبد محصولات، فرایندها و تعهدات. مصاحبه با ذی‌نفعان. خروجی: گزارش وضعیت موجود و نقشه شکاف‌ها.",
+        rm2_t: "ماه ۳–۴ | DESIGN (طراحی)", rm2_d: "تدوین OKR، تعیین مالک، بودجه و شاخص‌ها. طراحی قیف BD و برنامه‌های Medical/Patient Care. خروجی: نقشه استراتژی و واژه‌نامه KPI.",
+        rm3_t: "ماه ۵–۸ | PILOT (پایلوت)", rm3_d: "اجرای برنامه‌ها روی محصولات منتخب. پایش ماهانه و ارزیابی کیفیت داده و اثربخشی. خروجی: نتایج پایلوت، پرونده‌های تصمیم BD.",
+        rm4_t: "ماه ۹–۱۲ | SCALE (توسعه)", rm4_d: "گسترش برنامه‌های موفق، بازنگری سبد فرصت‌ها و بودجه، تدوین برنامه سال بعد. خروجی: گزارش ارزش‌آفرینی و پیشنهادهای سبد.",
 
         sec5_title: "۴. نظام سنجش و کنترل (۷ مؤلفه شاخص‌های کلیدی)",
         sec5_desc: "برای هر شاخص عملکردی، این ۷ مؤلفه رسماً مستند می‌شود تا از هرگونه تفسیر شخصی جلوگیری گردد.",
-        kpi_1: "۱. تعریف دقیق شاخص", kpi_2: "۲. فرمول و دامنه محاسبه", kpi_3: "۳. منبع استخراج داده‌ها", kpi_4: "۴. مالک حقوقی شاخص", kpi_5: "۵. تناوب پایش (هفتگی/فصلی)", kpi_6: "۶. خط مبنا و هدف نهایی", kpi_7: "۷. آستانه هشدار و اقدام اصلاحی",
+        kpi_1: "۱. تعریف دقیق شاخص", kpi_2: "۲. فرمول و دامنه محاسبه", kpi_3: "۳. منبع استخراج داده‌ها", kpi_4: "۴. مالک حقوقی شاخص", kpi_5: "۵. تناوب پایش (هفتگی/فصلی)", kpi_6: "۶. بیس‌لاین و هدف نهایی", kpi_7: "۷. آستانه هشدار و اقدام اصلاحی",
 
         sec6_title: "۵. سازوکار حاکمیت و پاسخ‌گویی",
         sec6_desc: "زمان‌بندی و خروجی جلسات هماهنگی بین‌واحدی جهت تخصیص منابع.",
@@ -185,17 +243,17 @@
         tr2_1: "ماهانه", tr2_2: "KPI، برنامه‌ها، بودجه (تخصیص ریالی) و ریسک‌ها", tr2_3: "گزارش انحراف و اقدامات اصلاحی",
         tr3_1: "فصلی", tr3_2: "OKR، اولویت‌های استراتژیک", tr3_3: "تصمیم ادامه، توقف، اصلاح یا توسعه",
 
-        sec7_title: "۶. چکیده راهبردی و مانیفست اجرایی",
-        sec7_desc: `<strong>چشم‌انداز ارزش‌آفرینی:</strong>رسالت محوری این ساختار، استقرار یک پلتفرم مدیریتی منسجم و نتیجه‌گراست. این سیستم به‌عنوان موتور محرک کسب‌وکار عمل کرده و «ظرفیت‌های علمی و بالینی»، «نیازهای واقعی بیماران»، «هوش بازار» و «فرصت‌های توسعه سبد محصول (BD)» را مستقیماً به تصمیمات استراتژیک اولویت‌بندی‌شده، تخصیص بهینه منابع و خلق ارزش پایدار تجاری تبدیل می‌کند. در این مسیر، حفظ استقلال علمی و انطباق مطلق با الزامات رگولاتوری، خط قرمز و پایه اعتبار سازمان خواهد بود.<strong>دکترین و انضباط اجرایی:</strong>برای تضمین انتقال استراتژی به مرحله عمل و جلوگیری از اتلاف منابع، معماری این سیستم بر یک اصل حاکمیتیِ تخطی‌ناپذیر استوار است:<br>در این سازمان، هیچ اولویتی بدون مالک پاسخگو، هیچ برنامه‌ای بدون خروجی ملموس، هیچ شاخص عملکردی (KPI) بدون تعریف معتبر، و هیچ انحرافی بدون اقدام اصلاحی فوری (<span class='tooltip' data-tooltip='Corrective and Preventive Action'>CAPA</span>) وجود نخواهد داشت. این انضباط یکپارچه، ضامن نهایی تبدیل پتانسیل‌ها به بازگشت سرمایه و رشد پایدار است.`,
+        sec7_title: "۶. چکیده راهبردی",
+        sec7_desc: `استقرار این پلتفرم یکپارچه، پاسخی صریح به دغدغه سرمایه‌گذاران برای پایان دادن به فعالیت‌های پراکنده و تضمین بازگشت سرمایه (ROI) است[cite: 1]. هدف این پلتفورم، ایجاد بستری یکپارچه است که «ظرفیت‌های علمی»، «نیازهای واقعی بیماران»، «هوش بازار (MI)» و «فرصت‌های توسعه سبد محصول (BD)» را مستقیماً به تصمیمات استراتژیکِ اولویت‌بندی‌شده، تخصیص بهینه منابع و سودآوری ملموس تبدیل کند.<br><br>از نگاه واقع‌بینانه تجاری، بهترین استراتژی‌ها بدون انضباط اجرایی چیزی جز اتلاف منابع نیستند. برای تضمین انتقال این چشم‌انداز به مرحله عمل، معماری سیستم بر یک اصل حاکمیتی استوار است: <strong>هیچ اولویتی بدون مالک پاسخگو، هیچ برنامه‌ای بدون خروجی عینی و قابل‌تحویل، هیچ شاخصی (KPI) بدون سنجش معتبر، و هیچ انحرافی بدون اقدام اصلاحی فوری (<span class='tooltip' data-tooltip='Corrective and Preventive Action'>CAPA</span>) رها نخواهد شد.</strong> این سطح از قاطعیت و شفافیت، ضامن نهایی برای تبدیل پتانسیل‌های خام سازمان به ارزش پایدار تجاری و رشد مقیاس‌پذیر است.`,
 
         sim_head: "داشبورد شبیه‌سازهای استراتژیک (C-Level Simulators)",
         sim_sub: "این ابزارها مفاهیم کیفی (کیفیت شواهد، انطباق قانونی) را به اعداد مالی (تومان) تبدیل می‌کنند. مبنای داده‌های بازار فایل <span class='doc-ref'>Pharma Market Intelligence[cite: 1]</span> است.",
-        btn_logic: "ℹ️ مبانی علمی و منطق",
+        logic_icon: "💡",
 
         // Chart Sim
         ch_title: "پیش‌بینی هوشمند درآمد و فرسایش رقابتی", ch_lbl: "نتیجه‌گیری راهبردی بازار",
         ch_v_opt: "بهینه: ورود رقبای ژنریک خنثی شده است", ch_v_warn: "شکننده: ریسک افت شدید درآمد در سال ۳",
-        ch_sl1: "سرمایه‌گذاری روی شواهد بالینی (RWE)", ch_sl2: "کشش قیمتی و پوشش بیمه‌ای", ch_sl3: "سرعت نفوذ رقبای ژنریک (ماه)",
+        ch_sl1: "سرمایه‌گذاری روی شواهد بالینی (<span class='tooltip' data-tooltip='Real-World Evidence'>RWE</span>)", ch_sl2: "کشش قیمتی و پوشش بیمه‌ای", ch_sl3: "سرعت نفوذ رقبای ژنریک (ماه)",
         logic_ch_t: "منطق مدل چرخه عمر (LCM)",
         logic_ch_d: "این مدل مبتنی بر منحنی‌های فرسایش پس از انقضای انحصار (Loss of Exclusivity) است. هرچه شواهد بومی قدرتمندتر باشد، مهاجرت پزشکان به داروی ژنریک کُندتر می‌شود. داده‌های پایه اندازه بازار مستقیماً از <span class='doc-ref'>Pharma Market Intelligence[cite: 1]</span> کالیبره شده‌اند. <a href='https://www.iqvia.com' class='logic-link' target='_blank'>منبع: IQVIA Institute</a>.",
 
@@ -231,22 +289,45 @@
       },
       en: {
         btn_theme: "Toggle Theme",
+        btn_edit: "Edit Text",
+        btn_save: "Save / Exit Edit",
+        
         sec1_title: "1. Executive Summary & Strategic Goal",
-        sec1_desc: "Creating an integrated management model to convert scientific capacity, patient needs, product opportunities, and market data into prioritized decisions and sustainable business value; maintaining scientific independence and regulatory compliance.<br><br><strong>Execution Logic spans five stages:</strong><br>Current State Diagnosis ← Priority Setting ← Define <span class='tooltip' data-tooltip='Objectives and Key Results'>OKRs</span> & KPIs ← Program Execution ← Result Evaluation.",
+        sec1_desc: "Creating an integrated management model to convert scientific capacity, patient needs, product opportunities, and market data into prioritized decisions, measurable outputs, and sustainable business value; maintaining scientific independence, patient safety, and regulatory compliance.<br><br><strong>Execution Logic spans five stages:</strong><br>Current State Diagnosis ← Priority Setting ← Define <span class='tooltip' data-tooltip='Objectives and Key Results'>OKRs</span> & KPIs ← Program Execution ← Result Evaluation & Course Correction",
         
         sec2_title: "2. Priority Domains & Execution Plan",
-        sec2_desc: "These domains must be managed as a unified system. Market analysis feeds <span class='tooltip' data-tooltip='Business Development'>BD</span> decisions, and clinical programs support real needs.",
-        dom_1_t: "Medical Affairs", dom_1_d: "Analyze scientific standing, identify evidence gaps, draft medical plans, and manage insights.", dom_1_o: "Outputs: Medical Plan, Gap Map.<br>KPI: Milestone realization.",
-        dom_2_t: "Business Development", dom_2_d: "Identify and screen opportunities relying on <span class='doc-ref'>Pharma Market Intelligence[cite: 1]</span>, and financial feasibility.", dom_2_o: "Outputs: Opportunity Funnel, Scorecard, Business Case.<br>KPI: Phase transit time.",
-        dom_3_t: "Patient Care", dom_3_d: "Map patient journey, identify access barriers, and design <span class='tooltip' data-tooltip='Patient Support Programs'>PSP</span>.", dom_3_o: "Outputs: PSP Design, Voice of Patient.<br>KPI: Response time, Issue resolution.",
-        dom_4_t: "PV & Compliance", dom_4_d: "Coordinate with Regulatory and <span class='tooltip' data-tooltip='Quality Assurance'>QA</span> to control the safety routing path.", dom_4_o: "Outputs: Compliance Calendar, RACI Matrix.<br>KPI: On-time reports, <span class='tooltip' data-tooltip='Corrective and Preventive Actions'>CAPA</span> completion.",
-        
+        sec2_desc: "These domains must be managed as a unified system. For example, market analysis must be an input to <span class='tooltip' data-tooltip='Business Development'>BD</span> decisions; BD decisions must align with production capacity; and the Medical program supports actual needs.",
+        dom_1_t: "Medical Affairs", 
+        dom_1_d: "Analyze scientific standing, identify evidence gaps, draft medical plans, design education, and manage insights.", 
+        dom_1_o1: "<span class='diamond'>◈</span> <div><span class='lbl-bold'>Outputs:</span> Medical Plan, Gap Map, Activity Calendar.</div>",
+        dom_1_o2: "<span class='diamond'>◈</span> <div><span class='lbl-bold'>KPI:</span> Milestone realization %, Priority gap coverage.</div>",
+        dom_2_t: "Business Development (BD)", 
+        dom_2_d: "Identify and screen opportunities relying on <span class='doc-ref'>Pharma Market Intelligence[cite: 1]</span>, regulatory review, financial analysis and feasibility.", 
+        dom_2_o1: "<span class='diamond'>◈</span> <div><span class='lbl-bold'>Outputs:</span> Opportunity Funnel, Scorecard, Business Case.</div>",
+        dom_2_o2: "<span class='diamond'>◈</span> <div><span class='lbl-bold'>KPI:</span> Assessment completeness, Phase transit time.</div>",
+        dom_3_t: "Patient Care", 
+        dom_3_d: "Map patient journey, identify access barriers, design support programs (<span class='tooltip' data-tooltip='Patient Support Program'>PSP</span>), and standardize responses.", 
+        dom_3_o1: "<span class='diamond'>◈</span> <div><span class='lbl-bold'>Outputs:</span> Patient Journey Map, PSP Design, Voice of Patient.</div>",
+        dom_3_o2: "<span class='diamond'>◈</span> <div><span class='lbl-bold'>KPI:</span> Response time, Issue resolution, SLA compliance.</div>",
+        dom_4_t: "Pharmacovigilance & Compliance", 
+        dom_4_d: "Define responsibilities, coordinate with <span class='tooltip' data-tooltip='Pharmacovigilance'>PV</span>, Regulatory and <span class='tooltip' data-tooltip='Quality Assurance'>QA</span>, and control the safety routing path.", 
+        dom_4_o1: "<span class='diamond'>◈</span> <div><span class='lbl-bold'>Outputs:</span> Compliance Calendar, RACI Matrix, Routing Path.</div>",
+        dom_4_o2: "<span class='diamond'>◈</span> <div><span class='lbl-bold'>KPI:</span> On-time reports, <span class='tooltip' data-tooltip='Corrective and Preventive Actions'>CAPA</span> completion.</div>",
+        dom_5_t: "Market & Competitive Intelligence", 
+        dom_5_d: "Analyze market size, competitors, and pricing utilizing the <span class='doc-ref'>Pharma Market Intelligence[cite: 1]</span> database.", 
+        dom_5_o1: "<span class='diamond'>◈</span> <div><span class='lbl-bold'>Outputs:</span> Market Report, Competitor Benchmark, Opportunity Map.</div>",
+        dom_5_o2: "<span class='diamond'>◈</span> <div><span class='lbl-bold'>KPI:</span> Forecast accuracy, Insights driving decisions.</div>",
+        dom_6_t: "Performance, Budget & Team", 
+        dom_6_d: "Develop OKRs, manage resources/budget, monitor performance, and develop team capabilities.", 
+        dom_6_o1: "<span class='diamond'>◈</span> <div><span class='lbl-bold'>Outputs:</span> KPI Dashboard, Resource Plan, Performance Report.</div>",
+        dom_6_o2: "<span class='diamond'>◈</span> <div><span class='lbl-bold'>KPI:</span> OKR realization, Budget variance, Action closure.</div>",
+
         sec3_title: "3. 12-Month Execution Roadmap",
-        sec3_desc: "Precise timeline from structural diagnosis to value scalability in the market.",
-        rm1_t: "Month 1–2 | DIAGNOSE", rm1_d: "Review structure, portfolio, and commitments. Set baseline.",
-        rm2_t: "Month 3–4 | DESIGN", rm2_d: "Formulate OKRs, allocate budget, and design Medical/PSP programs.",
-        rm3_t: "Month 5–8 | PILOT", rm3_d: "Execute programs on select products and monitor data quality.",
-        rm4_t: "Month 9–12 | SCALE", rm4_d: "Expand successful programs and draft next year's plan.",
+        sec3_desc: "Precise timeline from structural diagnosis to value scalability.",
+        rm1_t: "Month 1–2 | DIAGNOSE", rm1_d: "Review structure, portfolio, and commitments. Set <strong>baseline</strong>. Output: Current State Report & Gap Map.",
+        rm2_t: "Month 3–4 | DESIGN", rm2_d: "Formulate OKRs, allocate budget (in Tomans), and design Medical/PSP programs. Output: Strategy Map & KPI Glossary.",
+        rm3_t: "Month 5–8 | PILOT", rm3_d: "Execute programs on select products and evaluate data quality. Output: Pilot Results & BD Decision Files.",
+        rm4_t: "Month 9–12 | SCALE", rm4_d: "Expand successful programs and draft next year's plan. Output: Value Report & Portfolio Proposals.",
 
         sec5_title: "4. Measurement & Control (7 KPI Components)",
         sec5_desc: "For each KPI, 7 formal components are documented to prevent subjective interpretation.",
@@ -259,17 +340,17 @@
         tr2_1: "Monthly", tr2_2: "KPIs, Programs, Budget, Risks", tr2_3: "Variance Report & Corrective Actions",
         tr3_1: "Quarterly", tr3_2: "OKRs, Strategic Priorities", tr3_3: "Proceed, Halt, Revise, or Scale",
 
-        sec7_title: "6. Strategic Summary & Executive Manifesto",
-        sec7_desc: `<strong>Value Creation Vision:</strong>The core mission of this structure is to establish a cohesive, results-oriented management platform. Operating as the business engine, this system directly converts 'clinical & scientific capacities', 'real patient needs', 'market intelligence', and 'portfolio development (BD) opportunities' into prioritized strategic decisions, optimal resource allocation, and sustainable commercial value. In this journey, maintaining scientific independence and absolute compliance with regulatory requirements remains the red line and foundation of corporate credibility.<strong>Execution Doctrine & Discipline:</strong>To guarantee the transition of strategy into action and prevent resource waste, the architecture of this system rests on an inviolable governance principle:<br>Within this organization, there shall be no priority without an accountable owner, no program without a tangible deliverable, no Key Performance Indicator (KPI) without a valid definition, and no variance without an immediate <span class='tooltip' data-tooltip='Corrective and Preventive Action'>CAPA</span>. This unified discipline is the ultimate guarantor of translating potential into ROI and sustainable growth.`,
+        sec7_title: "6. Strategic Summary",
+        sec7_desc: `The deployment of this integrated platform is a direct response to investors' concerns about ending fragmented activities and guaranteeing Return on Investment (ROI). The goal of this platform is to create a unified foundation that translates 'scientific capacities', 'real patient needs', 'Market Intelligence (MI)', and 'Business Development (BD) opportunities' directly into prioritized strategic decisions, optimal resource allocation, and tangible profitability.<br><br>From a realistic commercial perspective, the best strategies without execution discipline are nothing but a waste of resources. To guarantee the translation of this vision into action, the system architecture rests on a sovereign principle: <strong>No priority will be left without an accountable owner, no program without a tangible deliverable, no KPI without valid measurement, and no deviation without an immediate <span class='tooltip' data-tooltip='Corrective and Preventive Action'>CAPA</span>.</strong> This level of decisiveness and transparency is the ultimate guarantor for converting the organization's raw potential into sustainable commercial value and scalable growth.`,
 
         sim_head: "Strategic C-Level Simulators",
         sim_sub: "These tools convert qualitative concepts into financial value. Market data relies on <span class='doc-ref'>Pharma Market Intelligence[cite: 1]</span>.",
-        btn_logic: "ℹ️ Scientific Logic & Source",
+        logic_icon: "💡",
 
         // Chart Sim
         ch_title: "Predictive Revenue & Market Share", ch_lbl: "Strategic Market Verdict",
         ch_v_opt: "Optimal: Generic erosion neutralized", ch_v_warn: "Fragile: Risk of severe revenue drop in Y3",
-        ch_sl1: "Clinical Evidence Investment (RWE)", ch_sl2: "Price Elasticity & Payer Coverage", ch_sl3: "Generic Penetration Speed (Months)",
+        ch_sl1: "Clinical Evidence Investment (<span class='tooltip' data-tooltip='Real-World Evidence'>RWE</span>)", ch_sl2: "Price Elasticity & Payer Coverage", ch_sl3: "Generic Penetration Speed (Months)",
         logic_ch_t: "Lifecycle Management Model (LCM)",
         logic_ch_d: "Based on Loss of Exclusivity erosion curves. Stronger local evidence slows physician migration to generics. Base market sizes are calibrated directly from <span class='doc-ref'>Pharma Market Intelligence[cite: 1]</span>. <a href='https://www.iqvia.com' class='logic-link' target='_blank'>Source: IQVIA Institute</a>.",
 
@@ -307,16 +388,9 @@
 
     let lang = 'fa';
     let theme = 'dark';
+    let isEditMode = false;
     let myChart;
 
-    // Toggle Scientific Info Panels
-    function toggleInfo(id) {
-      const el = document.getElementById(id);
-      if(el.classList.contains('active')) el.classList.remove('active');
-      else el.classList.add('active');
-    }
-
-    // Dynamic HTML Injection
     function renderContent() {
       const d = dict[lang];
       const dir = lang === 'fa' ? 'rtl' : 'ltr';
@@ -328,21 +402,23 @@
 
         <div class="section">
           <div class="sec-head"><h2>${d.sec2_title}</h2><p>${d.sec2_desc}</p></div>
-          <div class="grid-2">
-            <div class="card"><h3>${d.dom_1_t}</h3><p>${d.dom_1_d}</p><div class="card-list"><li>${d.dom_1_o}</li></div></div>
-            <div class="card"><h3>${d.dom_2_t}</h3><p>${d.dom_2_d}</p><div class="card-list"><li>${d.dom_2_o}</li></div></div>
-            <div class="card"><h3>${d.dom_3_t}</h3><p>${d.dom_3_d}</p><div class="card-list"><li>${d.dom_3_o}</li></div></div>
-            <div class="card"><h3>${d.dom_4_t}</h3><p>${d.dom_4_d}</p><div class="card-list"><li>${d.dom_4_o}</li></div></div>
+          <div class="grid-3">
+            <div class="card"><div class="card-tag-wrapper"><span class="card-tag">Pillar 1</span></div><h3 class="en-title">${d.dom_1_t}</h3><div class="card-desc">${d.dom_1_d}</div><div class="card-list"><div class="card-list-item">${d.dom_1_o1}</div><div class="card-list-item">${d.dom_1_o2}</div></div></div>
+            <div class="card"><div class="card-tag-wrapper"><span class="card-tag">Pillar 2</span></div><h3 class="en-title">${d.dom_2_t}</h3><div class="card-desc">${d.dom_2_d}</div><div class="card-list"><div class="card-list-item">${d.dom_2_o1}</div><div class="card-list-item">${d.dom_2_o2}</div></div></div>
+            <div class="card"><div class="card-tag-wrapper"><span class="card-tag">Pillar 3</span></div><h3 class="en-title">${d.dom_3_t}</h3><div class="card-desc">${d.dom_3_d}</div><div class="card-list"><div class="card-list-item">${d.dom_3_o1}</div><div class="card-list-item">${d.dom_3_o2}</div></div></div>
+            <div class="card"><div class="card-tag-wrapper"><span class="card-tag">Pillar 4</span></div><h3 class="en-title">${d.dom_4_t}</h3><div class="card-desc">${d.dom_4_d}</div><div class="card-list"><div class="card-list-item">${d.dom_4_o1}</div><div class="card-list-item">${d.dom_4_o2}</div></div></div>
+            <div class="card"><div class="card-tag-wrapper"><span class="card-tag">Pillar 5</span></div><h3 class="en-title">${d.dom_5_t}</h3><div class="card-desc">${d.dom_5_d}</div><div class="card-list"><div class="card-list-item">${d.dom_5_o1}</div><div class="card-list-item">${d.dom_5_o2}</div></div></div>
+            <div class="card"><div class="card-tag-wrapper"><span class="card-tag">Pillar 6</span></div><h3 class="en-title">${d.dom_6_t}</h3><div class="card-desc">${d.dom_6_d}</div><div class="card-list"><div class="card-list-item">${d.dom_6_o1}</div><div class="card-list-item">${d.dom_6_o2}</div></div></div>
           </div>
         </div>
 
         <div class="section">
           <div class="sec-head"><h2>${d.sec3_title}</h2><p>${d.sec3_desc}</p></div>
           <div class="grid-2">
-            <div class="card" style="border-right: 4px solid var(--primary);"><h3>${d.rm1_t}</h3><p>${d.rm1_d}</p></div>
-            <div class="card" style="border-right: 4px solid var(--primary);"><h3>${d.rm2_t}</h3><p>${d.rm2_d}</p></div>
-            <div class="card" style="border-right: 4px solid var(--primary);"><h3>${d.rm3_t}</h3><p>${d.rm3_d}</p></div>
-            <div class="card" style="border-right: 4px solid var(--primary);"><h3>${d.rm4_t}</h3><p>${d.rm4_d}</p></div>
+            <div class="card" style="border-right: 4px solid var(--primary);"><span class="card-tag">Phase 1</span><h3>${d.rm1_t}</h3><p class="card-desc">${d.rm1_d}</p></div>
+            <div class="card" style="border-right: 4px solid var(--primary);"><span class="card-tag">Phase 2</span><h3>${d.rm2_t}</h3><p class="card-desc">${d.rm2_d}</p></div>
+            <div class="card" style="border-right: 4px solid var(--primary);"><span class="card-tag">Phase 3</span><h3>${d.rm3_t}</h3><p class="card-desc">${d.rm3_d}</p></div>
+            <div class="card" style="border-right: 4px solid var(--primary);"><span class="card-tag">Phase 4</span><h3>${d.rm4_t}</h3><p class="card-desc">${d.rm4_d}</p></div>
           </div>
         </div>
 
@@ -391,12 +467,14 @@
                 <div class="res-verdict bg-primary" id="ch_verdict">${d.ch_v_opt}</div>
               </div>
               <div class="sim-header-row">
-                <h4 style="font-weight:800;">${d.ch_title}</h4>
-                <button class="info-btn" onclick="toggleInfo('info_ch')">${d.btn_logic}</button>
+                <h4 style="font-weight:800; color:var(--primary-light);">${d.ch_title}</h4>
               </div>
-              <div id="info_ch" class="sim-logic">
-                <div class="logic-title">${d.logic_ch_t}</div>${d.logic_ch_d}
+              
+              <div class="sim-logic">
+                <div class="logic-title"><span style="font-size:1.1rem">${d.logic_icon}</span> ${d.logic_ch_t}</div>
+                ${d.logic_ch_d}
               </div>
+              
               <div class="slider-group">
                 <label><span>${d.ch_sl1}</span> <span class="val" id="v_rwe" dir="ltr">x1.5</span></label>
                 <input type="range" id="sl_rwe" min="1" max="3" step="0.1" value="1.5" oninput="updateChart()">
@@ -419,14 +497,17 @@
             <div class="simulator">
               <div class="sim-top-card" id="card_bd">
                 <div class="res-title">${d.bd_lbl}</div>
-                <div class="res-score text-safe" id="val_bd" dir="ltr">8.0 / 10</div>
+                <div class="res-score text-safe" id="val_bd">
+                  <span class="num">8.0</span> <span class="unit">/ 10</span>
+                </div>
                 <div class="res-verdict bg-safe" id="dec_bd">${d.bd_pass}</div>
               </div>
               <div class="sim-controls">
                 <div class="sim-header-row">
-                  <h4>${d.bd_title}</h4><button class="info-btn" onclick="toggleInfo('info_bd')">${d.btn_logic}</button>
+                  <h4>${d.bd_title}</h4>
                 </div>
-                <div id="info_bd" class="sim-logic"><div class="logic-title">${d.logic_bd_t}</div>${d.logic_bd_d}</div>
+                <div class="sim-logic"><div class="logic-title"><span style="font-size:1.1rem">${d.logic_icon}</span> ${d.logic_bd_t}</div>${d.logic_bd_d}</div>
+                
                 <div class="slider-group"><label><span>${d.bd_sl1}</span> <span class="val" id="v_bd1" dir="ltr">8</span></label><input type="range" id="s_bd1" min="1" max="10" value="8" oninput="calcBD()"></div>
                 <div class="slider-group"><label><span>${d.bd_sl2}</span> <span class="val" id="v_bd2" dir="ltr">7</span></label><input type="range" id="s_bd2" min="1" max="10" value="7" oninput="calcBD()"></div>
                 <div class="slider-group"><label><span>${d.bd_sl3}</span> <span class="val" id="v_bd3" dir="ltr">9</span></label><input type="range" id="s_bd3" min="1" max="10" value="9" oninput="calcBD()"></div>
@@ -437,14 +518,17 @@
             <div class="simulator">
               <div class="sim-top-card bg-safe" id="card_psp" style="border-color:transparent;">
                 <div class="res-title">${d.psp_lbl}</div>
-                <div class="res-score text-safe" id="val_psp" dir="ltr" style="font-size:2.2rem;">9 ${d.toman}</div>
+                <div class="res-score text-safe" id="val_psp">
+                   <span class="num" id="val_psp_num">9.00</span> <span class="unit">${d.toman}</span>
+                </div>
                 <div class="res-verdict bg-safe" id="dec_psp" style="border-color:transparent;">${d.psp_save.replace('{n}', '600')}</div>
               </div>
               <div class="sim-controls">
                 <div class="sim-header-row">
-                  <h4>${d.psp_title}</h4><button class="info-btn" onclick="toggleInfo('info_psp')">${d.btn_logic}</button>
+                  <h4>${d.psp_title}</h4>
                 </div>
-                <div id="info_psp" class="sim-logic"><div class="logic-title">${d.logic_psp_t}</div>${d.logic_psp_d}</div>
+                <div class="sim-logic"><div class="logic-title"><span style="font-size:1.1rem">${d.logic_icon}</span> ${d.logic_psp_t}</div>${d.logic_psp_d}</div>
+                
                 <div class="slider-group"><label><span>${d.psp_sl1}</span> <span class="val" id="v_psp1" dir="ltr">5000</span></label><input type="range" id="s_psp1" min="1000" max="10000" step="500" value="5000" oninput="calcPSP()"></div>
                 <div class="slider-group"><label><span>${d.psp_sl2}</span> <span class="val" id="v_psp2" dir="ltr">30%</span></label><input type="range" id="s_psp2" min="10" max="60" step="5" value="30" oninput="calcPSP()"></div>
                 <div class="slider-group"><label><span>${d.psp_sl3}</span> <span class="val" id="v_psp3" dir="ltr">40%</span></label><input type="range" id="s_psp3" min="10" max="80" step="5" value="40" oninput="calcPSP()"></div>
@@ -455,14 +539,17 @@
             <div class="simulator">
               <div class="sim-top-card" style="background: rgba(239,68,68,0.08);" id="card_pv">
                 <div class="res-title">${d.pv_lbl}</div>
-                <div class="res-score text-danger" id="val_pv" dir="ltr" style="font-size:2.2rem;">1.35 ${d.toman}</div>
+                <div class="res-score text-danger" id="val_pv">
+                  <span class="num" id="val_pv_num">1.35</span> <span class="unit" id="val_pv_unit">${d.toman}</span>
+                </div>
                 <div class="res-verdict bg-danger" id="dec_pv">${d.pv_crit}</div>
               </div>
               <div class="sim-controls">
                 <div class="sim-header-row">
-                  <h4>${d.pv_title}</h4><button class="info-btn" onclick="toggleInfo('info_pv')">${d.btn_logic}</button>
+                  <h4>${d.pv_title}</h4>
                 </div>
-                <div id="info_pv" class="sim-logic"><div class="logic-title">${d.logic_pv_t}</div>${d.logic_pv_d}</div>
+                <div class="sim-logic"><div class="logic-title"><span style="font-size:1.1rem">${d.logic_icon}</span> ${d.logic_pv_t}</div>${d.logic_pv_d}</div>
+                
                 <div class="slider-group"><label><span>${d.pv_sl1}</span> <span class="val" id="v_pv1" dir="ltr">15</span></label><input type="range" id="s_pv1" min="0" max="60" value="15" oninput="calcPV()"></div>
                 <div class="slider-group"><label><span>${d.pv_sl2}</span> <span class="val" id="v_pv2" dir="ltr">3</span></label><input type="range" id="s_pv2" min="0" max="10" value="3" oninput="calcPV()"></div>
               </div>
@@ -472,14 +559,17 @@
             <div class="simulator">
               <div class="sim-top-card" style="background: rgba(139,92,246,0.08);" id="card_acc">
                 <div class="res-title">${d.acc_lbl}</div>
-                <div class="res-score text-accent" id="val_acc" dir="ltr">85%</div>
+                <div class="res-score text-accent" id="val_acc">
+                  <span class="num" id="val_acc_num">85</span><span class="unit">%</span>
+                </div>
                 <div class="res-verdict bg-accent" id="dec_acc">${d.acc_win.replace('{m}', '6')}</div>
               </div>
               <div class="sim-controls">
                 <div class="sim-header-row">
-                  <h4>${d.acc_title}</h4><button class="info-btn" onclick="toggleInfo('info_acc')">${d.btn_logic}</button>
+                  <h4>${d.acc_title}</h4>
                 </div>
-                <div id="info_acc" class="sim-logic"><div class="logic-title">${d.logic_acc_t}</div>${d.logic_acc_d}</div>
+                <div class="sim-logic"><div class="logic-title"><span style="font-size:1.1rem">${d.logic_icon}</span> ${d.logic_acc_t}</div>${d.logic_acc_d}</div>
+                
                 <div class="slider-group"><label><span>${d.acc_sl1}</span> <span class="val" id="v_acc1" dir="ltr">${d.lvl_high}</span></label><input type="range" id="s_acc1" min="1" max="3" value="3" oninput="calcACC()"></div>
                 <div class="slider-group"><label><span>${d.acc_sl2}</span> <span class="val" id="v_acc2" dir="ltr">8/10</span></label><input type="range" id="s_acc2" min="1" max="10" value="8" oninput="calcACC()"></div>
               </div>
@@ -492,11 +582,11 @@
       document.getElementById('mainContent').innerHTML = html;
       
       if(lang === 'en') {
-        document.querySelectorAll('.card').forEach(el => el.style.borderLeft = '4px solid var(--primary)');
-        document.querySelectorAll('.card').forEach(el => el.style.borderRight = '1px solid var(--border-subtle)');
+        document.querySelectorAll('.card').forEach(el => el.style.borderLeft = '1px solid #1e3a5f');
+        document.querySelectorAll('.card').forEach(el => el.style.borderRight = '1px solid #1e3a5f');
       } else {
-        document.querySelectorAll('.card').forEach(el => el.style.borderRight = '4px solid var(--primary)');
-        document.querySelectorAll('.card').forEach(el => el.style.borderLeft = '1px solid var(--border-subtle)');
+        document.querySelectorAll('.card').forEach(el => el.style.borderRight = '1px solid #1e3a5f');
+        document.querySelectorAll('.card').forEach(el => el.style.borderLeft = '1px solid #1e3a5f');
       }
 
       initChart(); calcBD(); calcPSP(); calcPV(); calcACC();
@@ -513,7 +603,7 @@
       document.getElementById('v_price').textContent = (price * 100) + "%";
       document.getElementById('v_comp').textContent = delay + (lang==='fa' ? " ماه" : " Months");
 
-      // Iran market adapted base revenue in Billion Tomans (میلیارد تومان)
+      // Iran market adapted base revenue in Billion Tomans
       let baseRev = [50, 80, 120, 160, 200];
       let newRev = baseRev.map(v => v * (rwe * 0.8) * price);
       
@@ -571,14 +661,14 @@
       document.getElementById('v_bd3').textContent = v3;
 
       const score = ((v1 * 0.4) + (v2 * 0.3) + (v3 * 0.3)).toFixed(1);
-      const valEl = document.getElementById('val_bd');
       const decEl = document.getElementById('dec_bd');
       const cardEl = document.getElementById('card_bd');
       
-      valEl.textContent = score + " / 10";
-      if (score >= 7.5) { decEl.textContent = dict[lang].bd_pass; decEl.className = "res-verdict bg-safe"; valEl.className = "res-score text-safe"; cardEl.style.backgroundColor = "rgba(16,185,129,0.08)"; }
-      else if (score >= 6.0) { decEl.textContent = dict[lang].bd_warn; decEl.className = "res-verdict bg-warn"; valEl.className = "res-score text-warn"; cardEl.style.backgroundColor = "rgba(245,158,11,0.08)"; }
-      else { decEl.textContent = dict[lang].bd_fail; decEl.className = "res-verdict bg-danger"; valEl.className = "res-score text-danger"; cardEl.style.backgroundColor = "rgba(239,68,68,0.08)"; }
+      document.getElementById('val_bd').innerHTML = `<span class="num">${score}</span> <span class="unit">/ 10</span>`;
+      
+      if (score >= 7.5) { decEl.textContent = dict[lang].bd_pass; decEl.className = "res-verdict bg-safe"; document.getElementById('val_bd').className = "res-score text-safe"; cardEl.style.backgroundColor = "rgba(16,185,129,0.08)"; }
+      else if (score >= 6.0) { decEl.textContent = dict[lang].bd_warn; decEl.className = "res-verdict bg-warn"; document.getElementById('val_bd').className = "res-score text-warn"; cardEl.style.backgroundColor = "rgba(245,158,11,0.08)"; }
+      else { decEl.textContent = dict[lang].bd_fail; decEl.className = "res-verdict bg-danger"; document.getElementById('val_bd').className = "res-score text-danger"; cardEl.style.backgroundColor = "rgba(239,68,68,0.08)"; }
     }
 
     function calcPSP() {
@@ -593,7 +683,7 @@
       // Avg treatment course value in Iran: e.g. 15 Million Tomans -> 15 / 1000 = 0.015 Billion Tomans
       const valueBillion = (saved * 15) / 1000; 
 
-      document.getElementById('val_psp').textContent = valueBillion.toFixed(2) + " " + dict[lang].toman;
+      document.getElementById('val_psp_num').textContent = valueBillion.toFixed(2);
       document.getElementById('dec_psp').textContent = dict[lang].psp_save.replace('{n}', saved);
     }
 
@@ -607,16 +697,17 @@
       const fineMillions = (delay * 50) + (capa * 200); 
       const fineBillions = fineMillions / 1000;
       
-      const val = document.getElementById('val_pv');
+      const num = document.getElementById('val_pv_num');
+      const unit = document.getElementById('val_pv_unit');
       const dec = document.getElementById('dec_pv');
       const card = document.getElementById('card_pv');
 
       if (fineMillions === 0) {
-        val.textContent = "0"; val.className = "res-score text-safe";
+        num.textContent = "0"; unit.style.display = "none"; document.getElementById('val_pv').className = "res-score text-safe";
         dec.textContent = dict[lang].pv_safe; dec.className = "res-verdict bg-safe";
         card.style.backgroundColor = "rgba(16,185,129,0.08)";
       } else {
-        val.textContent = fineBillions.toFixed(2) + " " + dict[lang].toman; val.className = "res-score text-danger";
+        num.textContent = fineBillions.toFixed(2); unit.style.display = "inline-block"; document.getElementById('val_pv').className = "res-score text-danger";
         dec.textContent = dict[lang].pv_crit; dec.className = "res-verdict bg-danger";
         card.style.backgroundColor = "rgba(239,68,68,0.08)";
       }
@@ -633,9 +724,32 @@
       const prob = Math.min(100, (rwe * 20) + (kol * 4)); 
       const speedUp = Math.round((prob / 100) * 8); 
 
-      document.getElementById('val_acc').textContent = prob + "%";
+      document.getElementById('val_acc_num').textContent = prob;
       document.getElementById('dec_acc').textContent = dict[lang].acc_win.replace('{m}', speedUp);
     }
+
+    // --- Editor Logic ---
+    document.getElementById('editBtn').addEventListener('click', (e) => {
+      isEditMode = !isEditMode;
+      const mainContent = document.getElementById('mainContent');
+      if (isEditMode) {
+        mainContent.contentEditable = "true";
+        mainContent.style.border = "2px dashed var(--primary)";
+        mainContent.style.padding = "2rem";
+        e.target.textContent = dict[lang].btn_save;
+        e.target.style.backgroundColor = "var(--success)";
+        e.target.style.borderColor = "var(--success)";
+        e.target.style.color = "#fff";
+      } else {
+        mainContent.contentEditable = "false";
+        mainContent.style.border = "none";
+        mainContent.style.padding = "3rem 4%";
+        e.target.textContent = dict[lang].btn_edit;
+        e.target.style.backgroundColor = "";
+        e.target.style.borderColor = "";
+        e.target.style.color = "";
+      }
+    });
 
     // --- Toggles ---
     document.getElementById('themeBtn').addEventListener('click', () => {
@@ -649,6 +763,12 @@
       document.documentElement.lang = lang;
       document.documentElement.dir = lang === 'fa' ? 'rtl' : 'ltr';
       document.body.dir = lang === 'fa' ? 'rtl' : 'ltr';
+      const editBtn = document.getElementById('editBtn');
+      if(isEditMode) {
+        editBtn.textContent = dict[lang].btn_save;
+      } else {
+        editBtn.textContent = dict[lang].btn_edit;
+      }
       renderContent();
     });
 
